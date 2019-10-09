@@ -394,7 +394,7 @@ open class SideMenuController: UIViewController {
         case .sideBySide:
             viewToAnimate = contentContainerView
             viewToAnimate2 = menuContainerView
-            containerWidth = viewToAnimate.frame.width
+            containerWidth = viewToAnimate2!.frame.width
             leftBorder = 0
             rightBorder = menuWidth
         }
@@ -669,7 +669,8 @@ open class SideMenuController: UIViewController {
                 baseFrame = CGRect(origin: view.frame.origin,
                                    size: CGSize(width: preferences.basic.menuWidth, height: baseFrame.height))
             } else {
-                baseFrame.origin.x = -baseFrame.width
+                baseFrame.origin.x = -preferences.basic.menuWidth
+                baseFrame.size.width = preferences.basic.menuWidth
             }
             let factor: CGFloat = adjustedDirection == .left ? 1 : -1
             baseFrame.origin.x *= factor
